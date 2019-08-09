@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="GUI for a structural analysis program">
+    <meta name="author" content="GIES-Unal">
+
+		<title>Rigidez</title>
+
+    <!-- Custom styles -->
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
+	</head>
+
+	<body>
+
+    <!-- Libraries -->
+    <script type="text/javascript" src="lib/three.min.js"></script>
+    <script type="text/javascript" src="lib/OrbitControls.js"></script>
+
+    <!-- Renderer script -->
+    <script type="text/javascript" src="js/renderer.js"/></script>
+
+    <!-- The sidebar -->
+    <div class="sidebar">
+      <p><img src="img/geometry.svg" height="24" width="24">  Geometry</p>
+      <a href="#"><img src="img/node.svg" height="24" width="24">  Nodes</a>
+      <a href="#"><img src="img/element.svg" height="24" width="24">  Elements</a>
+
+      <p><img src="img/loads.svg" height="24" width="24"/>  Loads</p>
+      <a href="#"><img src="img/point.svg" height="24" width="24">  Point</a>
+      <a href="#"><img src="img/moment.svg" height="24" width="24">  Moment</a>
+      <a href="#"><img src="img/distributed.svg" height="24" width="24">  Distributed</a>
+    </div>
+
+    <!-- Space to put the rendered scene -->
+		<div class="world" id="world"></div>
+
+    <!-- Menu bar as a navigtion bar -->
+		<!--nav class="meta">
+			<a class="demo-link" href="#">
+        <img src="img/node.svg" height="20" width="20"/>
+        <span>New node</span>
+      </a>
+      <a class="demo-link" href="#">
+        <img src="img/element.svg" height="20" width="20"/>
+        <span>New element</span>
+      </a>
+      <a class="demo-link" href="#">
+        <img src="img/point.svg" height="20" width="20"/>
+        <span>Point load</span>
+      </a>
+      <a class="demo-link" href="#">
+        <img src="img/moment.svg" height="20" width="20"/>
+        <span>Point moment</span>
+      </a>
+      <a class="demo-link" href="#">
+        <img src="img/distributed.svg" height="20" width="20"/>
+        <span>Distributed load</span>
+      </a>
+		</nav-->
+	</body>
+</html>

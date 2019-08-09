@@ -1,0 +1,17 @@
+{
+  "name": "rigidez",
+  "version": "0.1.0",
+  "description": "Graphical user interface for structural analysis program: rigidez",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "electron .",
+    "start-mac": "/Applications/Electron.app/Contents/MacOS/Electron ."
+  },
+  "author": "GIES-Unal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^6.0.0"
+  },
+  "dependencies": {
+  }
+}
