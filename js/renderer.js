@@ -34,14 +34,13 @@ function createScene() {
     nearPlane,
     farPlane
     );
-  scene.fog = new THREE.Fog(0xf7d9aa, 100,950);
   camera.position.x = 0;
   camera.position.y = 10;
   camera.position.z = 30;
 
   renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setSize(width, height);
-  renderer.shadowMap.enabled = true;
+  // renderer.shadowMap.enabled = true;
   container = document.getElementById('world');
   container.appendChild(renderer.domElement);
 
@@ -77,7 +76,26 @@ function createLights() {
   scene.add(light);
 }
 
-// Render functions
+// HELPERS
+
+var size = 10;
+var divisions = 1;
+
+function createGrid(){
+
+  var grid = new THREE.GridHelper(size, divisions);
+  scene.add(grid);
+
+}
+
+function createAxes(){
+
+  var axes = new THREE.AxesHelper(1);
+  scene.add(axes);
+
+}
+
+// RENDER FUNCTIONS
 
 function loop(){
   updateModel();
@@ -88,13 +106,14 @@ function loop(){
 
 function updateModel(){
   // Put anything to update at every time frame. For example animations.
-  // airplane.propeller.rotation.x += 0.3;
 }
 
 function init(event){
   createScene();
   createLights();
-  createFloor(20, 12);
+  createGrid();
+  // createAxes();
+  // createFloor(20, 12);
   createMesh();
   loop();
 }
