@@ -40,7 +40,10 @@ function createScene() {
 
   renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
   renderer.setSize(width, height);
-  // renderer.shadowMap.enabled = true;
+  renderer.shadowMap.enabled = true;
+  renderer.gammaFactor = 2.2;
+  renderer.gammaOutput = true;
+
   container = document.getElementById('world');
   container.appendChild(renderer.domElement);
 
@@ -79,11 +82,11 @@ function createLights() {
 // HELPERS
 
 var size = 10;
-var divisions = 1;
+var divisions = 10;
 
 function createGrid(){
 
-  var grid = new THREE.GridHelper(size, divisions);
+  var grid = new THREE.GridHelper(size, divisions, 0x444444, 0x999999);
   scene.add(grid);
 
 }
@@ -112,7 +115,7 @@ function init(event){
   createScene();
   createLights();
   createGrid();
-  // createAxes();
+  createAxes();
   // createFloor(20, 12);
   createMesh();
   loop();
