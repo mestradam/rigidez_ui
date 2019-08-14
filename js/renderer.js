@@ -183,3 +183,10 @@ function elem(coord1, coord2){
   mesh.add(newElem);
   scene.add(mesh);
 }
+
+function loadFile(fileId){
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = fileId;
+  document.body.appendChild(script);
+}
