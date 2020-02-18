@@ -1,47 +1,250 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="GUI for a structural analysis program">
-    <meta name="author" content="GIES-Unal">
+<html lang="en">
 
-		<title>Rigidez</title>
+<head>
 
-    <!-- Custom styles -->
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Libraries -->
-    <script type="text/javascript" src="lib/three.min.js"></script>
-    <script type="text/javascript" src="lib/OrbitControls.js"></script>
+  <title>Rigidez - pyFEM</title>
 
-	</head>
+  <!-- Custom fonts for this template-->
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-	<body>
+  <!-- Custom styles for this template-->
+  <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-    <!-- The top bar -->
-    <div class="topnav" id="myTopnav">
-      <a class="active"><img src="img/geometry.svg" height="24" width="24">  Geometry</a>
-      <a><img src="img/loads.svg" height="24" width="24"/>  Loads</a>
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon rotate-n-15">
+          <i class="fas fa-store-alt"></i>
+        </div>
+        <div class="sidebar-brand-text mx-3">Rigidez</div>
+      </a>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider my-0">
+      
+      <!-- Nav Item - User Information -->
+        <li class="nav-item dropdown no-arrow">
+            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+            <span class="mr-2 d-none d-lg-inline small">Valerie Luna</span>
+            </a>
+            <!-- Dropdown - User Information -->
+            <div class="dropdown-menu shadow" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-database fa-sm fa-fw mr-2 text-gray-500"></i>
+                Mis proyectos
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-500"></i>
+                Perfil
+            </a>
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-500"></i>
+                Configuración
+            </a>
+            <a class="dropdown-item" href="#">
+                <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-500"></i>
+                Actividad
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-500"></i>
+                Salir
+            </a>
+            </div>
+        </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Definir
+      </div>
+      
+      <!-- Nav Item -->
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-fw fa-building"></i><span>Proyecto</span></a>
+      </li>
+      
+      <!-- Nav Item -->
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-fw fa-cookie"></i><span>Materiales</span></a>
+      </li>
+      
+      <!-- Nav Item -->
+      <li class="nav-item">
+        <a class="nav-link" href="#"><i class="fas fa-fw fa-square"></i><span>Secciones</span></a>
+      </li>
+      
+      <!-- Nav Item - Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDefLoad" aria-expanded="true" aria-controls="collapseDefLoad">
+          <i class="fas fa-fw fa-long-arrow-alt-down"></i>
+          <span>Cargas</span>
+        </a>
+        <div id="collapseDefLoad" class="collapse" aria-labelledby="headingOne" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="#">Casos de carga</a>
+            <a class="collapse-item" href="#">Combinaciones de carga</a>
+            <a class="collapse-item" href="#">Espectro de aceleraciones</a>
+          </div>
+        </div>
+      </li>
+      
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+      
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Modelo
+      </div>
+
+      <!-- Nav Item - Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseGeom" aria-expanded="true" aria-controls="collapseGeom">
+          <i class="fas fa-fw fa-vector-square"></i>
+          <span>Geometría</span>
+        </a>
+        <div id="collapseGeom" class="collapse" aria-labelledby="collapseGeom" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Agregar/Remover:</h6>
+            <a class="collapse-item" href="#">Nodos</a>
+            <a class="collapse-item" href="#">Barras</a>
+            <a class="collapse-item" href="#">Muros/Placas</a>
+            <h6 class="collapse-header">Modificar:</h6>
+            <a class="collapse-item" href="#">Mover</a>
+            <a class="collapse-item" href="#">Rotar</a>
+            <a class="collapse-item" href="#">Escalar</a>
+            <a class="collapse-item" href="#">Copiar/Repetir</a>
+          </div>
+        </div>
+      </li>
+      
+      <!-- Nav Item - Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLoad" aria-expanded="true" aria-controls="collapseLoad">
+          <i class="fas fa-fw fa-long-arrow-alt-down"></i>
+          <span>Cargas</span>
+        </a>
+        <div id="collapseLoad" class="collapse" aria-labelledby="collapseLoad" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Agregar/Remover:</h6>
+            <a class="collapse-item" href="#">Fuerza concentrada</a>
+            <a class="collapse-item" href="#">Momento concentrado</a>
+            <a class="collapse-item" href="#">Fuerza distribuida</a>
+            <a class="collapse-item" href="#">Presión en superficie</a>
+          </div>
+        </div>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Análisis
+      </div>
+
+      <!-- Nav Item - Charts -->
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-calculator"></i>
+          <span>Tipo de análisis</span></a>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="#">
+          <i class="fas fa-fw fa-table"></i>
+          <span>AAAAA</span></a>
+      </li>
+      
+      <div class="text-center d-none d-md-inline">
+        <a href="#" class="btn btn-success btn-circle">
+          <i class="fas fa-play"></i>
+        </a>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+      <!-- Main place to render the model -->
+      <div class="world" id="world">
+      </div>
+
     </div>
+    <!-- End of Content Wrapper -->
 
-    <!-- The sidebar -->
-    <div class="sidebar">
-      <p><img src="img/geometry.svg" height="24" width="24">  Geometry</p>
-      <a href="#"><img src="img/node.svg" height="24" width="24">  Nodes</a>
-      <a href="#"><img src="img/element.svg" height="24" width="24">  Elements</a>
+  </div>
+  <!-- End of Page Wrapper -->
 
-      <p><img src="img/loads.svg" height="24" width="24"/>  Loads</p>
-      <a href="#"><img src="img/point.svg" height="24" width="24">  Point</a>
-      <a href="#"><img src="img/moment.svg" height="24" width="24">  Moment</a>
-      <a href="#"><img src="img/distributed.svg" height="24" width="24">  Distributed</a>
+  
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Space to put the rendered scene -->
-		<div class="world" id="world"></div>
+  <!-- Bootstrap core JavaScript-->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Renderer script -->
-    <script type="text/javascript" src="js/renderer.js"/></script>
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-	</body>
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/chart.js/Chart.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/chart-area-demo.js"></script>
+  <script src="js/demo/chart-pie-demo.js"></script>
+
+  <!-- Renderer script -->
+  <script type="text/javascript" src="js/renderer.js"/></script>
+
+  <!-- Three.js Libraries -->
+  <script type="text/javascript" src="vendor/three/three.min.js"></script>
+  <script type="text/javascript" src="vendor/three/OrbitControls.js"></script>
+
+</body>
+
 </html>
